@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // setTimeout(() => {
+    //   alert('過三秒')
+    // }, 3000);
+
+    // const msg = () => {
+    //   alert('過三秒')
+    // }
+    // setTimeout(msg, 3000)
+    //  setTimeout(FUNC, 秒數)，直接打 func 名稱，若打FUNC() 是會 return 這個 FUNC 裡面得值
+
+    const msg = (ms, str) => {
+      alert(`${str}，過了 ${ms / 1000} 秒`)
+    }
+    // setTimeout(Funtion 名, delayv毫秒, 傳入function的參數)
+    // setTimeout(msg, 3000, 3000, '早安')
+    // console.log('abc')// 會先直接往下跑console.log，再三秒後才會跑出setTimeout(有辦法停下應在ch.9)
+
+    const delayHi = setTimeout(msg, 3000, 3000, '早安')
+    clearTimeout(delayHi)
+
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+
+<body>
+
+  <h1 id="text"></h1>
+
+  <script>
+    let input = parseInt(prompt('輸入秒數數字'))
+    const text = document.getElementById('text')
+    text.style.color = 'blue'
+    text.innerText = `剩餘 ${input} 秒`
+    let timer = setInterval(() => {
+      text.innerText = `剩餘 ${--input} 秒`
+      if (input === 0) {
+        text.innerText = '時間到'
+        text.style.color = 'red'
+        clearInterval(timer)
+      }
+    }, 1000)
+
+
+
+
+  </script>
+</body>
+
+</html>

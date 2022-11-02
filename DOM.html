@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .text-blue {
+      color: blue;
+    }
+
+    .border {
+      border: 3px solid #aac;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 id="title">標題</h1>
+  <h2>111</h2>
+  <h2>222</h2>
+  <h3 class="text-red">1111</h3>
+  <h3 class="text-red">2222</h3>
+
+  <h3 class="text-blue">111</h3>
+  <h3 class="text-blue">222</h3>
+  <h4 class="text-center">111</h4>
+  <h4 class="text-center">222</h4>
+
+  <div id="links">
+    <a href="https://google.com">GOOGLE</a>
+    <a href="https://fb.com">FB</a>
+  </div>
+
+  <ul id="ul1">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+  </ul>
+
+  <ul id="ul2">
+    <li class="border">1</li>
+    <li id="ul2li2">2</li>
+    <li class="border">3</li>
+  </ul>
+
+  <div id="div">
+    <p>asdasasd</p>
+  </div>
+
+  <div id="div2">
+    <p>asdasasd</p>
+  </div>
+
+  <script>
+    // 用 ID 抓元素
+    const title = document.getElementById('title')
+    // .innertext 元素內的文字 (outertext)
+    console.log(`title 的文字是 ${title.innerText}`)
+    //改文字
+    title.innerText = '嘿嘿 見鬼拉'
+
+    // 使用標籤名抓元素。
+    const h2 = document.getElementsByTagName('h2')
+    // ，element複數，抓下來會是陣列，用迴圈一次改
+    for (const el of h2) {
+      el.innerHTML = '<i>aaa</i>'
+      // .innerHTML 
+      console.log(el.innerHTML, el.innerText)
+    }
+
+    // 抓 class 改行內樣式，改成紅色
+    const reds = document.getElementsByClassName('text-red')
+    for (const el of reds) {
+      // .style
+      el.style.color = 'red'
+      console.log(el.style.color)
+    }
+
+    const blues = document.getElementsByClassName('text-blue')
+    for (const el of blues) {
+      // el.style 是取行內樣式
+      console.log(el.style.color)
+      // 若要取得最終樣式要用 window.getComputedStyle (元素，偽元素名).getPropertyValue(樣式名)
+      // window.getComputedStyle (el, ':before').getPropertyValue('background')
+      console.log(window.getComputedStyle(el, null).getPropertyValue('color'))
+    }
+
+    // const centers = document.querySelector('.text-center')
+    const centers = document.querySelectorAll('.text-center')
+    for (const el of centers) {
+      // // 方法一:把 - 去掉，後面第一個字改大寫。
+      // el.style.textAlign = 'center'
+      // 方法二:給他一個中括號
+      el.style['text-align'] = 'center'
+    }
+    // .children 取內部所有元素
+    const links = document.getElementById('links').children
+    for (const el of links) {
+      // 元素,屬性
+      el.href = 'https://github.com'
+    }
+
+    const ul1 = document.getElementById('ul1')
+    // .firstElementChild 裡面的第一個
+    ul1.firstElementChild.classList.add('text-blue')
+    // .lastElementChild裡面的最後一個
+    ul1.lastElementChild.classList.add('border')
+
+    const ul2li2 = document.getElementById('ul2li2')
+    ul2li2.previousElementSibling.classList.remove('border')
+    ul2li2.nextElementSibling.classList.remove('border')
+    ul2li2.parentElement.style.background = 'gray'
+
+    // 抓上兩層(要抓幾層上幾層)
+    // let el = document.getElementById('xxx')
+    // for (let i = 0; i < 2; i++) {
+    //   el = el.parentElement
+    // }
+
+    // 插入 HTML 
+    const div = document.getElementById('div')
+    div.insertAdjacentHTML('beforeend', '<h1>beforeend</h1>')
+    div.insertAdjacentHTML('beforebegin', '<h1>beforebegin</h1>')
+    div.insertAdjacentHTML('afterend', '<h1>afterend</h1>')
+    div.insertAdjacentHTML('afterbegin', '<h1>afterbegin</h1>')
+
+    // 新增元素
+    const div2 = document.getElementById('div2')
+    const image = document.createElement('img')
+    // 帳號名稱.png 就會出現大頭貼。
+    image.src = 'https://github.com/Arielqwq.png'
+    image.width = '100'
+    image.height = '100'
+    // 新增後用　append 放進 div2　的結尾標籤前網頁
+    div2.append(image)
+    // 用append 放到 div2 的開始標籤後網頁
+    // 因為東西已經在網頁上了，所以會移動東西的位置
+    div2.prepend(image)
+
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>var 與 let 的差異</title>
+</head>
+
+<body>
+  <script>
+    // for (let i = 1; i <= 5; i++) {
+    //   setTimeout(() => {
+    //     console.log(i)
+    //   }, 3000);
+    // }
+
+    // 盡量不用 var
+    for (var i = 1; i <= 5; i++) {
+      setTimeout(() => {
+        console.log(i)
+      }, 3000);
+    }
+    // 迴圈比較快，跑到最後會出現 i=6，但不符迴圈，所以最後就是6 不會再跑
+  </script>
+
+</body>
+
+</html>
